@@ -16,7 +16,7 @@ class Body extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "WELCOME TO EDU",
+              "Hello Sai Kumar!",
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             SizedBox(
@@ -24,7 +24,7 @@ class Body extends StatelessWidget {
             ),
             SvgPicture.asset(
               "assets/icons/chat.svg",
-              height: size.height * 0.55,
+              height: size.height * 0.48,
             ),
             SizedBox(
               height: size.height * 0.05,

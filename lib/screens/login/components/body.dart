@@ -23,16 +23,12 @@ class Body extends StatelessWidget {
             "LOGIN",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          SizedBox(
-            height: size.height * 0.03,
-          ),
+          SizedBox(height: size.height * 0.01),
           SvgPicture.asset(
             "assets/icons/login.svg",
-            height: size.height * 0.35,
+            height: size.height * 0.25,
           ),
-          SizedBox(
-            height: size.height * 0.03,
-          ),
+          SizedBox(height: size.height * 0.01),
           RoundedInputField(
             hintText: "Your Email",
             onChanged: (value) {},
@@ -42,9 +38,7 @@ class Body extends StatelessWidget {
             text: "LOGIN",
             press: () {},
           ),
-          SizedBox(
-            height: size.height * 0.03,
-          ),
+          SizedBox(height: size.height * 0.01),
           AlreadyHaveAccountCheck(
             press: () {
               Navigator.push(
