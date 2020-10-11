@@ -16,42 +16,44 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Background(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text(
-            "LOGIN",
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: size.height * 0.01),
-          SvgPicture.asset(
-            "assets/icons/login.svg",
-            height: size.height * 0.25,
-          ),
-          SizedBox(height: size.height * 0.01),
-          RoundedInputField(
-            hintText: "Your Email",
-            onChanged: (value) {},
-          ),
-          RoundedPasswordField(onChanged: (value) {}),
-          RoundedButton(
-            text: "LOGIN",
-            press: () {},
-          ),
-          SizedBox(height: size.height * 0.01),
-          AlreadyHaveAccountCheck(
-            press: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return SignUpScreen();
-                  },
-                ),
-              );
-            },
-          )
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              "LOGIN",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: size.height * 0.01),
+            SvgPicture.asset(
+              "assets/icons/login.svg",
+              height: size.height * 0.25,
+            ),
+            SizedBox(height: size.height * 0.01),
+            RoundedInputField(
+              hintText: "Your Email",
+              onChanged: (value) {},
+            ),
+            RoundedPasswordField(onChanged: (value) {}),
+            RoundedButton(
+              text: "LOGIN",
+              press: () {},
+            ),
+            SizedBox(height: size.height * 0.01),
+            AlreadyHaveAccountCheck(
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return SignUpScreen();
+                    },
+                  ),
+                );
+              },
+            )
+          ],
+        ),
       ),
     );
   }
