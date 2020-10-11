@@ -4,6 +4,7 @@ import 'package:login_signup/components/rounded_button.dart';
 import 'package:login_signup/constants.dart';
 import 'package:login_signup/screens/login/login_screen.dart';
 import 'package:login_signup/screens/welcome/components/backgroud.dart';
+import 'package:login_signup/signup/signup_screen.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -23,7 +24,7 @@ class Body extends StatelessWidget {
             ),
             SvgPicture.asset(
               "assets/icons/chat.svg",
-              height: size.height * 0.45,
+              height: size.height * 0.55,
             ),
             SizedBox(
               height: size.height * 0.05,
@@ -41,10 +42,19 @@ class Body extends StatelessWidget {
                   );
                 }),
             RoundedButton(
-                text: "LOGIN",
+                text: "SIGNUP",
                 color: kPrimaryLightColor,
                 textColor: Colors.black,
-                press: () {}),
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return SignUpScreen();
+                      },
+                    ),
+                  );
+                }),
           ],
         ),
       ),

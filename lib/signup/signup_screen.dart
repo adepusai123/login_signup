@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 
-class Background extends StatelessWidget {
+class SignUpScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Body(
+      child: Column(),
+    ));
+  }
+}
+
+class Body extends StatelessWidget {
   final Widget child;
-  const Background({
+  const Body({
     Key key,
     @required this.child,
   }) : super(key: key);
-
-  // final Size size;
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -19,17 +26,18 @@ class Background extends StatelessWidget {
         alignment: Alignment.center,
         children: <Widget>[
           Positioned(
-            top: 0,
-            left: 0,
-            child: Image.asset("assets/images/main_top.png",
-                width: size.width * 0.3),
-          ),
+              top: 0,
+              left: 0,
+              child: Image.asset(
+                "assets/images/signup_top.png",
+                width: size.height * 0.25,
+              )),
           Positioned(
               bottom: 0,
               left: 0,
               child: Image.asset(
                 "assets/images/main_bottom.png",
-                width: size.width * 0.3,
+                width: size.height * 0.15,
               )),
           child
         ],
