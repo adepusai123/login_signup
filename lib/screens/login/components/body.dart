@@ -7,16 +7,30 @@ import 'package:login_signup/components/rounded_password_field.dart';
 import 'package:login_signup/screens/login/components/background.dart';
 import 'package:login_signup/signup/signup_screen.dart';
 
-class Body extends StatelessWidget {
-  const Body({
-    Key key,
-  }) : super(key: key);
+class Body extends StatefulWidget {
+  @override
+  _LoginState createState() => _LoginState();
+}
+
+class _LoginState extends State<Body> {
+  final _formKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Background(
       child: SingleChildScrollView(
+          child: Form(
+        key: _formKey,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -51,7 +65,7 @@ class Body extends StatelessWidget {
             )
           ],
         ),
-      ),
+      )),
     );
   }
 }
