@@ -29,10 +29,10 @@ class Body extends StatelessWidget {
           ),
           RoundedInputField(
             hintText: "Your Email",
-            onChanged: (value) {},
+            onSaved: (value) {},
           ),
           RoundedPasswordField(
-            onChanged: (value) {},
+            onSaved: (value) {},
           ),
           RoundedButton(text: "SIGNUP", press: () {}),
           SizedBox(height: size.height * 0.02),

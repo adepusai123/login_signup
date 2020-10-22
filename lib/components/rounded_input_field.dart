@@ -5,15 +5,15 @@ import 'package:login_signup/constants.dart';
 class RoundedInputField extends StatelessWidget {
   final String hintText;
   final IconData icon;
-  final ValueChanged<String> onChanged;
+  final Function onSaved;
   final Color color;
   final Function validator;
-  final Function controller;
+  final TextEditingController controller;
   const RoundedInputField({
     Key key,
     this.hintText,
     this.icon = Icons.person,
-    this.onChanged,
+    this.onSaved,
     this.color = kPrimaryColor,
     this.validator,
     this.controller,
@@ -22,15 +22,18 @@ class RoundedInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFieldContainer(
-      child: TextField(
-        onChanged: onChanged,
+      child: TextFormField(
+        controller: controller,
+        validator: (value) => validator(value),
+        onSaved: onSaved,
         decoration: InputDecoration(
-            icon: Icon(
-              icon,
-              color: color,
-            ),
-            hintText: hintText,
-            border: InputBorder.none),
+          icon: Icon(
+            icon,
+            color: color,
+          ),
+          hintText: hintText,
+          border: InputBorder.none,
+        ),
       ),
     );
   }

@@ -3,15 +3,24 @@ import 'package:login_signup/components/text_field_container.dart';
 import 'package:login_signup/constants.dart';
 
 class RoundedPasswordField extends StatelessWidget {
-  final ValueChanged<String> onChanged;
-  const RoundedPasswordField({Key key, this.onChanged}) : super(key: key);
+  final Function onSaved;
+  final TextEditingController controller;
+  final Function validator;
+  const RoundedPasswordField({
+    Key key,
+    this.onSaved,
+    this.controller,
+    this.validator,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFieldContainer(
-      child: TextField(
+      child: TextFormField(
+        controller: controller,
+        validator: (value) => validator(value),
         obscureText: true,
-        onChanged: onChanged,
+        onSaved: onSaved,
         decoration: InputDecoration(
             hintText: "Password",
             icon: Icon(

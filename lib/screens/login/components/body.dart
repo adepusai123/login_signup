@@ -4,6 +4,7 @@ import 'package:login_signup/components/already_have_an_account_check.dart';
 import 'package:login_signup/components/rounded_button.dart';
 import 'package:login_signup/components/rounded_input_field.dart';
 import 'package:login_signup/components/rounded_password_field.dart';
+import 'package:login_signup/models/userModel.dart';
 import 'package:login_signup/screens/login/components/background.dart';
 import 'package:login_signup/signup/signup_screen.dart';
 
@@ -16,12 +17,32 @@ class _LoginState extends State<Body> {
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  UserModel _user = UserModel();
 
-  @override
-  void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
-    super.dispose();
+  // @override
+  // void dispose() {
+  //   emailController.dispose();
+  //   passwordController.dispose();
+  //   super.dispose();
+  // }
+
+  _emailValidator(String val) {
+    final expr =
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
+    if (val.isEmpty) {
+      return 'Email is required.';
+    }
+    if (!RegExp(expr).hasMatch(val)) {
+      return "Enter valid email.";
+    }
+    return null;
+  }
+
+  _passwordValidator(String val) {
+    if (val.isEmpty) {
+      return 'Password is required.';
+    }
+    return null;
   }
 
   @override
@@ -42,13 +63,27 @@ class _LoginState extends State<Body> {
             ),
             SizedBox(height: size.height * 0.03),
             RoundedInputField(
+              controller: emailController,
               hintText: "Your Email",
-              onChanged: (value) {},
+              onSaved: (value) {
+                setState(() {
+                  _user.email = value;
+                });
+              },
+              validator: _emailValidator,
             ),
-            RoundedPasswordField(onChanged: (value) {}),
+            RoundedPasswordField(
+              controller: passwordController,
+              onSaved: (value) {
+                setState(() {
+                  _user.password = value;
+                });
+              },
+              validator: _passwordValidator,
+            ),
             RoundedButton(
               text: "LOGIN",
-              press: () {},
+              press: () => _onLoginSubmit(),
             ),
             SizedBox(height: size.height * 0.01),
             AlreadyHaveAccountCheck(
@@ -67,5 +102,12 @@ class _LoginState extends State<Body> {
         ),
       )),
     );
+  }
+
+  _onLoginSubmit() {
+    var form = _formKey.currentState;
+    if (form.validate()) {
+      form.save();
+    }
   }
 }
